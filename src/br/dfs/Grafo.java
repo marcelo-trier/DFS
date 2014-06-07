@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class Grafo {
 	char[] vertices;
 	ArrayList<Aresta> arestas = new ArrayList<Aresta>();
-//	int numeroConeccoes[]; // numero conexoes de cada vertice...
 
 	public char[] getVertices() {
 		return vertices;
@@ -32,12 +31,10 @@ public class Grafo {
 	public void addVertices(char[] v) {
 		if (vertices != null && vertices.length == v.length) {
 			System.arraycopy(v, 0, vertices, 0, v.length);
-//			Arrays.fill(numeroConeccoes, 0);
 			return;
 		}
 		
 		vertices = v.clone();
-//		numeroConeccoes = new int[vertices.length];
 	}
 
 	public void addAresta(Aresta a) {
@@ -46,7 +43,6 @@ public class Grafo {
 
 	public void criaVertices( int len ) {
 		vertices = new char[ len ];
-//		numeroConeccoes = new int[ len ];
 		char tmp = 'a';
 		for( int i=0; i<vertices.length; i++ ){
 			vertices[i] = tmp++;
@@ -82,14 +78,4 @@ public class Grafo {
 
 		br.close();
 	}
-	
-	
-	/*
-	 * CollectionUtils collUt; Vertice findVertice( char c ) { CollectionUtils }
-	 * 
-	 * Customer findCustomerByid(final int id){ return (Customer)
-	 * CollectionUtils.find(customers, new Predicate() { public boolean
-	 * evaluate(Object arg0) { return ((Customer) arg0).getId()==id; } }); }
-	 */
-
 }
