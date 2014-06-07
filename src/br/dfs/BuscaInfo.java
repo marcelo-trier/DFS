@@ -8,14 +8,11 @@ enum COLOR_DFS {
 
 public class BuscaInfo {
 	
-	
+	COLOR_DFS color = COLOR_DFS.WHITE;
 	int vertex = 0;
 	int du = 0;
 	int fu = 0;
 	int pi = -1; // indice do vertice anterior
-//	BuscaInfo pi = null; 
-	COLOR_DFS color = COLOR_DFS.WHITE;
-//	BuscaInfo adjacentes[] = null;
 	int listAdj[] = null; // indice dos verticesss
 
 	public BuscaInfo(int vi) {
@@ -37,15 +34,4 @@ public class BuscaInfo {
 		}
 		throw new Exception( "nao encontrado ID... verificar!" );
 	}
-		
-	
-	
-	/*
-	 * CollectionUtils collUt; Vertice findVertice( char c ) { CollectionUtils }
-	 * 
-	 * Customer findCustomerByid(final int id){ return (Customer)
-	 * CollectionUtils.find(customers, new Predicate() { public boolean
-	 * evaluate(Object arg0) { return ((Customer) arg0).getId()==id; } }); }
-	 */
-
 }

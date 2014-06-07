@@ -1,43 +1,40 @@
-package br.dfs;
+package br.dfs3;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Grafo {
-	char[] vertices;
-	ArrayList<Aresta> arestas = new ArrayList<Aresta>();
+public class Grafo3 {
+	Vertice3[] vertices;
+	ArrayList<Aresta3> arestas = new ArrayList<Aresta3>();
 
-	public char[] getVertices() {
+	public Vertice3[] getVertices() {
 		return vertices;
 	}
 
 	public void transpose() {
-		int tmp;
-		for( Aresta a : arestas ) {
+		Vertice3 tmp;
+		for( Aresta3 a : arestas ) {
 			tmp = a.vi[0];
 			a.vi[0] = a.vi[1];
 			a.vi[1] = tmp;
 		}
 	}
 	
-	public ArrayList<Aresta> getArestas() {
+	public ArrayList<Aresta3> getArestas() {
 		return arestas;
 	}
 
-	public Grafo() {
-		
-	}
+	public Grafo3() {}
 	
-	public Grafo(ArrayList<Aresta> la, char[] v) {
-		arestas = ( ArrayList<Aresta> )la.clone();
+	public Grafo3(ArrayList<Aresta3> la, Vertice3[] v) {
+		arestas = ( ArrayList<Aresta3> )la.clone();
 		if( v != null )
 			addVertices(v);
 	}
 
-	public void addVertices(char[] v) {
+	public void addVertices( Vertice3[] v) {
 		if (vertices != null && vertices.length == v.length) {
 			System.arraycopy(v, 0, vertices, 0, v.length);
 			return;
@@ -46,15 +43,17 @@ public class Grafo {
 		vertices = v.clone();
 	}
 
-	public void addAresta(Aresta a) {
+	public void addAresta(Aresta3 a) {
 		arestas.add(a);
 	}
 
 	public void criaVertices( int len ) {
-		vertices = new char[ len ];
+		vertices = new Vertice3[ len ];
 		char tmp = 'a';
+		String label;
 		for( int i=0; i<vertices.length; i++ ){
-			vertices[i] = tmp++;
+			label = "" + tmp++;
+			vertices[i] = new Vertice3( i, label );
 		}
 		addVertices( vertices );
 	}
@@ -79,7 +78,10 @@ public class Grafo {
 			for( int numeroColuna=0; numeroColuna<tokens.length; numeroColuna++ ) {
 				int tmp = Integer.parseInt( tokens[ numeroColuna ] );
 				if( tmp != -1 ) {
-					Aresta a = new Aresta( numeroLinha, numeroColuna, tmp );
+					Vertice3 v1, v2;
+					v1 = vertices[ numeroLinha ];
+					v2 = vertices[ numeroColuna ];
+					Aresta3 a = new Aresta3( v1, v2, tmp );
 					addAresta( a );
 				}
 			}
