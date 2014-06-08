@@ -1,13 +1,11 @@
 package br.dfs3;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class DFS3 extends Grafo3 {
 
-	BuscaInfo3 listaInfo[];
+	public BuscaInfo3 listaInfo[];
 	int time = 0;
 	
 	public DFS3( Grafo3 g ) throws Exception {

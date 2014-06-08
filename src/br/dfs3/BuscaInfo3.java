@@ -9,9 +9,9 @@ enum COLOR_DFS {
 public class BuscaInfo3 implements Comparable<BuscaInfo3> {
 	
 	COLOR_DFS color = COLOR_DFS.WHITE;
-	Vertice3 vertex = null;
+	public Vertice3 vertex = null;
 	int du = 0;
-	int fu = 0;
+	public int fu = 0;
 	Vertice3 pi = null; // indice do vertice anterior
 	Vertice3 listAdj[] = null; // indice dos verticesss
 

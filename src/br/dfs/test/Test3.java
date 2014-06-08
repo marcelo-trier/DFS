@@ -5,7 +5,7 @@ import java.io.File;
 import br.dfs.util.GerenteArquivos;
 import br.dfs3.DFS3;
 import br.dfs3.Grafo3;
-import br.dfs3.SCC;
+import br.dfs3.scc.SCC;
 
 public class Test3 {
 
