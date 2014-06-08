@@ -10,6 +10,6 @@ public class Vertice3 {
 	}
 	
 	public String toString() {
-		return label + "("+id+")";
+		return label;
 	}
 }

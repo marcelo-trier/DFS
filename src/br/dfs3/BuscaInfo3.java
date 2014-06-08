@@ -6,7 +6,7 @@ enum COLOR_DFS {
 	WHITE, GRAY, BLACK;
 }
 
-public class BuscaInfo3 {
+public class BuscaInfo3 implements Comparable<BuscaInfo3> {
 	
 	COLOR_DFS color = COLOR_DFS.WHITE;
 	Vertice3 vertex = null;
@@ -33,5 +33,15 @@ public class BuscaInfo3 {
 				return bi;
 		}
 		throw new Exception( "nao encontrado ID... verificar!" );
+	}
+
+	@Override
+	public int compareTo(BuscaInfo3 o) {
+		if( this.fu < o.fu )
+			return -1;
+		else if( this.fu > o.fu )
+			return 1;
+		else
+			return 0;
 	}
 }

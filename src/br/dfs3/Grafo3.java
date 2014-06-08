@@ -9,6 +9,25 @@ public class Grafo3 {
 	Vertice3[] vertices;
 	ArrayList<Aresta3> arestas = new ArrayList<Aresta3>();
 
+	public String toString() {
+		String msg = "GRAFO = { V, E }, show down:\n";
+		msg += "V = { ";
+		for( Vertice3 v : vertices ) {
+			msg += v.label + ", ";
+		}
+		msg = msg.substring( 0, msg.length() - 2 );
+		msg += " };\n";
+		msg += "E = { ";
+		for( Aresta3 a : arestas ) {
+			Vertice3 u=a.vi[0], v=a.vi[1];
+			msg += "("+u.label+" -> "+v.label+"), ";
+		}
+		msg = msg.substring(0, msg.length() - 2 );
+		msg += " }\n";
+		return msg;
+	}
+	
+	
 	public Vertice3[] getVertices() {
 		return vertices;
 	}

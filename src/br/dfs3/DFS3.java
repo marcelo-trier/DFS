@@ -1,6 +1,9 @@
 package br.dfs3;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class DFS3 extends Grafo3 {
 
@@ -16,23 +19,38 @@ public class DFS3 extends Grafo3 {
 		buildAdjacentes();
 	}
 	
-	public void sortVertexFu() {
-		
+	public void sortFu() {
+		Arrays.sort( listaInfo ); // ordenar listaInfo em ordem crescente...
+		int u = vertices.length - 1;
+		for( BuscaInfo3 bi : listaInfo ) {
+			vertices[ u-- ] = bi.vertex; // pegar os vertices em ordem decrescente...
+		}
 	}
 	
 	public void buildAdjacentes() throws Exception {
 		ArrayList<Aresta3> tmp = new ArrayList<Aresta3>();
 		
-//		for( int vertex=0; vertex<vertices.length; vertex++ ) {
 		for( Vertice3 vertex : vertices ) {
 			tmp.clear();
 			for( Aresta3 a : arestas ) {
-				if( a.vi[0] == vertex )
+				if( a.vi[0].equals( vertex ) )
 					tmp.add( a );
 			}
 			BuscaInfo3 bi = BuscaInfo3.findBi( vertex, listaInfo );
 			bi.setAdjacentes( tmp );
 		}
+	}
+	
+	public void execute( int inicio ) throws Exception {
+		int index = inicio;
+		for( int i=0; i<listaInfo.length; i++ ) {
+			index = ( index + 1 ) % listaInfo.length;
+			BuscaInfo3 bi = listaInfo[ index ];
+			if( bi.color == COLOR_DFS.WHITE ) {
+				visite( bi );
+			}
+		}
+			
 	}
 	
 	public void execute() throws Exception {
@@ -62,7 +80,7 @@ public class DFS3 extends Grafo3 {
 		String du = "du[] = { ";
 		String fu = "fu[] = { ";
 		String pi = "pi[] = { ";
-		msg = "#DFS\n";
+		msg = "#DFS :\n";
 		for( BuscaInfo3 bi : listaInfo ) {
 			du += bi.du + ", ";
 			fu += bi.fu + ", ";
@@ -74,7 +92,8 @@ public class DFS3 extends Grafo3 {
 		pi = pi.substring( 0, pi.length() - 2 ) + " };";
 		
 		msg += du + "\n" + fu + "\n" + pi;
-		
+
+		msg = super.toString() + msg;
 		return msg;
 	}
 }
